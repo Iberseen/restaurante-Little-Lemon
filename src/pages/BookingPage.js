@@ -1,20 +1,15 @@
-function BookingPage() {
+// BookingPage.js
+import BookingForm from "./BookingForm";
+
+function BookingPage({ availableTimes, dispatch, submitForm }) {
   return (
     <section>
-      <h1>Reservar mesa</h1>
-
-      <form>
-        <label>Fecha:</label>
-        <input type="date" />
-
-        <label>Hora:</label>
-        <input type="time" />
-
-        <label>Personas:</label>
-        <input type="number" min="1" max="10" />
-
-        <button type="submit">Reservar</button>
-      </form>
+      <h1>Reserve a Table</h1>
+      <BookingForm
+        availableTimes={availableTimes}
+        dispatch={dispatch}
+        submitForm={submitForm}
+      />
     </section>
   );
 }

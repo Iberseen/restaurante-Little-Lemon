@@ -5,7 +5,7 @@ function Nav() {
     <nav>
       <ul>
         <li><Link to="/">Inicio</Link></li>
-        <li><Link to="/booking">Reservas</Link></li>
+        <li><Link to="/">Reservas</Link></li>
       </ul>
     </nav>
   );
