@@ -1,14 +1,14 @@
 import CallToAction from "../componentes/CallToAction";
 import Specials from "../componentes/Specials";
-import CustomersSay from "../componentes/CustomersSay";
+import Cards from "../componentes/Cards";
 import Chicago from "../componentes/Chicago";
 
 function Homepage() {
   return (
     <>
       <CallToAction />
+      <Cards />
       <Specials />
-      <CustomersSay />
       <Chicago />
     </>
   );

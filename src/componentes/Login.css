@@ -1,0 +1,49 @@
+.login-container {
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "JetBrains Mono", monospace;
+}
+
+.login-box {
+  background: #495E57;
+  padding: 30px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 250px;
+}
+
+.login-box h2 {
+  color: white;
+  text-align: center;
+  font-weight: 700;
+}
+
+.login-box input {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  font-family: inherit;
+}
+
+.login-box button {
+  padding: 10px;
+  background: green;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.login-box button:hover {
+  background: #00cc6a;
+}
+
+.login-box p {
+  color: white;
+  text-align: center;
+}

@@ -1,15 +1,16 @@
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 import { useReducer, useState, useEffect } from "react";
 
 import Homepage from "./pages/Homepage";
 import BookingPage from "./pages/BookingPage";
 import ConfirmedBooking from "./pages/ConfirmedBooking";
 import Reservations from "./pages/Reservations";
+import Login from "./pages/Login";
 
 // Inicializar horarios
 export const initializeTimes = () => {
   const today = new Date();
-  return fetchAPI(today);
+  return fetchAPI(today); // tu función de disponibilidad
 };
 
 // Reducer
@@ -25,32 +26,25 @@ export const updateTimes = (state, action) => {
 function Main() {
   const navigate = useNavigate();
 
-  // Reducer (horas disponibles)
   const [availableTimes, dispatch] = useReducer(
     updateTimes,
     [],
     initializeTimes
   );
 
-  // Estado para reservas
   const [bookings, setBookings] = useState([]);
 
-  // ✅ Cargar reservas guardadas (al iniciar la app)
   useEffect(() => {
     const savedBookings = localStorage.getItem("bookings");
-    if (savedBookings) {
-      setBookings(JSON.parse(savedBookings));
-    }
+    if (savedBookings) setBookings(JSON.parse(savedBookings));
   }, []);
 
-  // ✅ Guardar reservas cuando cambian
   useEffect(() => {
     localStorage.setItem("bookings", JSON.stringify(bookings));
   }, [bookings]);
 
-  // ✅ Enviar formulario (SIN hooks aquí)
   const submitForm = (formData) => {
-    const result = submitAPI(formData);
+    const result = submitAPI(formData); // simula API
 
     if (result) {
       setBookings((prev) => [...prev, formData]);
@@ -62,7 +56,6 @@ function Main() {
     <main>
       <Routes>
         <Route path="/" element={<Homepage />} />
-
         <Route
           path="/bookingPage"
           element={
@@ -73,13 +66,19 @@ function Main() {
             />
           }
         />
-
         <Route path="/confirmedBooking" element={<ConfirmedBooking />} />
+        <Route path="/login" element={<Login />} />
 
-        {/* ✅ Página de reservas */}
+        {/* Ruta protegida */}
         <Route
           path="/reservations"
-          element={<Reservations bookings={bookings} />}
+          element={
+            localStorage.getItem("auth") ? (
+              <Reservations bookings={bookings} />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
         />
       </Routes>
     </main>

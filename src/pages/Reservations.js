@@ -6,7 +6,7 @@ function Reservations({ bookings }) {
       {bookings.length === 0 ? (
         <p>No reservations yet.</p>
       ) : (
-        bookings.map((b, index) => (
+        bookings.map((b, index) => (  
           <div
             key={index}
             style={{
