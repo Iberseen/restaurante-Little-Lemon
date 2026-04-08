@@ -15,7 +15,9 @@ function Nav() {
         }}
       >
         <li><Link to="/" style={linkStyle}>Home</Link></li>
-        <li><Link to="/about" style={linkStyle}>About</Link></li>
+        <li>
+          <a href="#about" style={linkStyle}>About</a>
+        </li>
         <li><Link to="/bookingPage" style={linkStyle}>Book</Link></li>
         <li><Link to="/login" style={linkStyle}>Login</Link></li>
       </ul>

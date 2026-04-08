@@ -7,14 +7,13 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
+  const isValid = user && password;
+
   const handleLogin = (e) => {
     e.preventDefault();
 
     if (user === "admin" && password === "admin") {
-      // Guardamos sesión visual
       localStorage.setItem("auth", "true");
-
-      // Redirigimos automáticamente a reservations
       navigate("/reservations");
     } else {
       alert("Usuario o contraseña incorrectos");
@@ -22,27 +21,34 @@ export default function Login() {
   };
 
   return (
-    <div className="login-container">
-      <form onSubmit={handleLogin} className="login-box">
+    <section className="login">
+      <form onSubmit={handleLogin} className="login-form">
         <h2>Login</h2>
-        <input
-          type="text"
-          placeholder="Usuario"
-          value={user}
-          onChange={(e) => setUser(e.target.value)}
-          style={{ marginBottom: "10px", padding: "5px" }}
-        />
-        <br />
-        <input
-          type="password"
-          placeholder="Contraseña"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          style={{ marginBottom: "10px", padding: "5px" }}
-        />
-        <br />
-        <button type="submit">Entrar</button>
+
+        <div className="form-group">
+          <label>Usuario</label>
+          <input
+            type="text"
+            placeholder="Introduce tu usuario"
+            value={user}
+            onChange={(e) => setUser(e.target.value)}
+          />
+        </div>
+
+        <div className="form-group">
+          <label>Contraseña</label>
+          <input
+            type="password"
+            placeholder="Introduce tu contraseña"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+
+        <button type="submit" disabled={!isValid} className="login-btn">
+          Entrar
+        </button>
       </form>
-    </div>
+    </section>
   );
 }

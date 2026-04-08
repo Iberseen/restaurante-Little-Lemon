@@ -1,5 +1,5 @@
 import CallToAction from "../componentes/CallToAction";
-import Specials from "../componentes/Specials";
+import Reviews from "../componentes/Reviews";
 import Cards from "../componentes/Cards";
 import Chicago from "../componentes/Chicago";
 
@@ -8,7 +8,7 @@ function Homepage() {
     <>
       <CallToAction />
       <Cards />
-      <Specials />
+      <Reviews />
       <Chicago />
     </>
   );
